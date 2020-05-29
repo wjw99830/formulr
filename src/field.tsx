@@ -92,7 +92,9 @@ export function useField<Value>(
   validators: IValidators<Value> = [],
 ): FieldModel<Value> {
   const { parent, strategy, form } = useFormContext();
-  const model = useModelAndChildProps(field, parent, strategy, defaultValue!, form);
+  /** defaultValue为undefined时，field的类型是model，不会使用到defaultValue，类型安全 */
+  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+  const model = useModelAndChildProps<Value>(field, parent, strategy, defaultValue!, form);
   const { value$, error$ } = model;
   useValue$(value$, value$.getValue());
   useValue$(error$, error$.getValue());

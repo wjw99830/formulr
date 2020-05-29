@@ -69,6 +69,7 @@ export function useMulti<T, R>(
 export function useMulti<T, R>(...funcs: any[]): (t: T) => void {
   let deps: any[];
   if (Array.isArray(last(funcs))) {
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     deps = funcs.pop()!;
   } else {
     deps = funcs;

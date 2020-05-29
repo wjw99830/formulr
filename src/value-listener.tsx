@@ -68,6 +68,7 @@ export function FieldSetValue({ name, children }: IFieldSetValueProps) {
   const childContext = React.useMemo<IFormContext>(
     () => ({
       ...ctx,
+      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
       parent: model!,
     }),
     [ctx, model],
